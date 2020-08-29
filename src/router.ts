@@ -3,6 +3,9 @@ import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
 import NotFound from "./views/NotFound.vue";
 import SwitchDoc from "./docs/SwitchDoc.vue";
+import ButtonDoc from "./docs/ButtonDoc.vue";
+import DialogDoc from "./docs/DialogDoc.vue";
+import TabsDoc from "./docs/TabsDoc.vue";
 
 const history = createWebHashHistory();
 const router = createRouter({
@@ -21,10 +24,22 @@ const router = createRouter({
           component: SwitchDoc,
         },
         {
-          // 不知道为什么，无法使用 "*" 来匹配所有路由
-          path: "/doc/:path",
-          component: NotFound,
+          path: "button",
+          component: ButtonDoc,
         },
+        {
+          path: "dialog",
+          component: DialogDoc,
+        },
+        {
+          path: "tabs",
+          component: TabsDoc,
+        },
+        // {
+        //   // 不知道为什么，无法使用 "*" 来匹配所有路由
+        //   path: "/doc/:path",
+        //   component: NotFound,
+        // },
       ],
     },
   ],
