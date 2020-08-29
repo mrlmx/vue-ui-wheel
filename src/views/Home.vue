@@ -5,8 +5,8 @@
         <h1>Vue UI Wheel</h1>
         <h2>a vue ui component project for practicing and it's just a toy</h2>
         <p class="action">
-            <a>GitHub</a>
-            <a>Start</a>
+            <a href="https://github.com/mrlmx/vue-ui-wheel" target="__blank">GitHub</a>
+            <router-link to="/doc">Start</router-link>
         </p>
     </div>
 </div>
@@ -28,6 +28,10 @@ export default {
 
     >h1 {
         margin-bottom: 50px;
+    }
+
+    >h2 {
+        font-weight: normal;
     }
 
     >.action {
