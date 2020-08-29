@@ -22,4 +22,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.banner {
+    text-align: center;
+    padding: 50px 0;
+
+    >h1 {
+        margin-bottom: 50px;
+    }
+
+    >.action {
+        margin: 50px 0;
+
+        a {
+            border: 1px solid #666;
+            border-radius: 20px;
+            padding: 5px 10px;
+            background: #efefef;
+            margin: 10px;
+            font-size: 16px;
+        }
+    }
+}
 </style>
