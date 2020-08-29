@@ -7,8 +7,8 @@
 <script>
 import { ref } from "vue";
 export default {
-    props:{
-        value: Boolean
+    props: {
+        value: Boolean,
     },
     setup(props, context) {
         const toggle = () => {
@@ -22,37 +22,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$height: 22px;
+$width: $height * 2;
+$round-width: $height - 4;
+$round-gap: 2px;
+
 button {
-    height: 22px;
-    width: 44px;
+    height: $height;
+    width: $width;
     border: none;
     background: #efefef;
-    border-radius: 11px;
+    border-radius: $height / 2;
     position: relative;
-    cursor: pointer;
     transition: background-color 0.5s;
+    cursor: pointer;
 
     &:focus {
         outline: none;
     }
-}
 
-span {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: #aaa;
-    transition: left 0.25s, background-color .5s;
-}
-
-.checked {
-    background: #000;
     > span {
-        background: #fff;
-        left: calc(100% - 18px - 2px);
+        position: absolute;
+        top: $round-gap;
+        left: $round-gap;
+        height: $round-width;
+        width: $round-width;
+        border-radius: 50%;
+        background: #aaa;
+        transition: left 0.25s, background-color 0.5s;
+    }
+
+    &.checked {
+        background: #111;
+        > span {
+            background: #fff;
+            left: calc(100% - #{$round-width} - #{$round-gap});
+        }
     }
 }
 </style>
