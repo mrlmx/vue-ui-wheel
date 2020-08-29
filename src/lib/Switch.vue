@@ -16,6 +16,13 @@ export default {
     background: #EFEFEF;
     border-radius: 11px;
     position: relative;
+    cursor: pointer;
+
+    &:hover{
+      > span{
+        left: calc(100% - 18px - 2px);
+      }
+    }
   }
   span{
     position: absolute;
@@ -26,4 +33,5 @@ export default {
     border-radius: 50%;
     background: #AAA;
   }
+
 </style>
