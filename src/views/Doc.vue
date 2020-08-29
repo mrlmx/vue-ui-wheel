@@ -12,14 +12,16 @@
                         <router-link to="/doc/button">Button 组件</router-link>
                     </li>
                     <li>
-                        <router-link to="dialog">Dialog 组件</router-link>
+                        <router-link to="/doc/dialog">Dialog 组件</router-link>
                     </li>
                     <li>
                         <router-link to="/doc/tabs">Tabs 组件</router-link>
                     </li>
                 </ol>
             </aside>
-            <main class="main">main</main>
+            <main class="main">
+                <router-view />
+            </main>
         </div>
     </div>
 </template>
@@ -62,7 +64,9 @@ export default {
 
     .main {
         flex-grow: 1;
-        padding: 20px;
+        padding-top: 20px;
+        padding-left: 20px;
+        overflow: auto;
     }
 }
 </style>
