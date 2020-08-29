@@ -29,6 +29,11 @@ button {
     border-radius: 11px;
     position: relative;
     cursor: pointer;
+    transition: background-color 0.5s;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 span {
@@ -39,11 +44,13 @@ span {
     width: 18px;
     border-radius: 50%;
     background: #aaa;
+    transition: left 0.25s, background-color .5s;
 }
 
 .checked {
     background: #000;
     > span {
+        background: #fff;
         left: calc(100% - 18px - 2px);
     }
 }
