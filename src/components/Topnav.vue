@@ -1,10 +1,13 @@
 <template>
     <div class="top-nav">
-        <div class="logo" @click="toggleAside">LOGO</div>
+        <div class="logo">
+            <router-link to="/">LOGO</router-link>
+        </div>
         <ul class="menu">
             <li>菜单1</li>
             <li>菜单2</li>
         </ul>
+        <span class="toggle-aside" @click="toggleAside">三</span>
     </div>
 </template>
 
@@ -37,10 +40,32 @@ export default {
         user-select: none;
     }
 
+    .toggle-aside {
+        position: absolute;
+        left: 20px;
+        margin: auto 0px;
+        cursor: pointer;
+        display: none;
+    }
+
     .menu {
         li {
             display: inline-block;
             margin-left: 20px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .top-nav {
+        justify-content: center;
+
+        .toggle-aside {
+            display: inline-block;
+        }
+
+        .menu {
+            display: none;
         }
     }
 }
