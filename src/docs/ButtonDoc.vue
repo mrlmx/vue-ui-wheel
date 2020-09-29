@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Button>按钮</Button>
+        <Button @click="handleClick">按钮</Button>
     </div>
 </template>
 
@@ -8,6 +8,14 @@
 import Button from "../lib/Button.vue";
 export default {
     components: { Button },
+    setup(){
+        const handleClick = () => {
+            console.log("hi");
+        }
+        return {
+            handleClick
+        }
+    }
 };
 </script>
 
