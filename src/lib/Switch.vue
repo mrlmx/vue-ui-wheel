@@ -1,5 +1,5 @@
 <template>
-    <button :class="{checked: value}" @click="toggle">
+    <button class="xin-switch" :class="{checked: value}" @click="toggle">
         <span />
     </button>
 </template>
@@ -22,12 +22,13 @@ export default {
 </script>
 
 <style lang="scss">
+$class-prefix: "xin";
 $height: 22px;
 $width: $height * 2;
 $round-width: $height - 4;
 $round-gap: 2px;
 
-button {
+.#{$class-prefix}-switch {
     height: $height;
     width: $width;
     border: none;

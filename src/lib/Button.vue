@@ -25,11 +25,12 @@ export default {
 </script>
 
 <style lang="scss">
+$class-prefix: "xin";
 $color: #40a9ff;
 $height: 32px;
 $border-radius: 2px;
 
-.xin-button {
+.#{$class-prefix}-button {
     display: inline-block;
     font-weight: 400;
     white-space: nowrap;
