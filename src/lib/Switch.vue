@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $height: 22px;
 $width: $height * 2;
 $round-width: $height - 4;

@@ -24,7 +24,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $color: #40a9ff;
 $height: 32px;
 $border-radius: 2px;
