@@ -1,6 +1,11 @@
 <template>
     <div>
-        <Button @click="handleClick">按钮</Button>
+    <div class="btn-wrapper">
+        <Button>按钮</Button>
+        <Button type="primary">按钮</Button>
+        <Button type="ghost">按钮</Button>
+        <Button type="dashed">按钮</Button>
+    </div>
     </div>
 </template>
 
@@ -20,4 +25,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn-wrapper{
+    button{
+        margin: 0 20px 20px 0;
+    }
+}
 </style>
