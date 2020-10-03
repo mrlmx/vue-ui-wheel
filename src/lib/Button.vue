@@ -14,12 +14,14 @@ export default {
         //     default: "default",
         // },
         type: String,
+        size: String,
     },
     setup(props, ctx) {
-        const { type } = props;
+        const { type, size } = props;
         const classs = computed(() => {
             return {
                 [`xin-button-${type}`]: type,
+                [`xin-button-${size}`]: size,
             };
         });
         return {
@@ -80,8 +82,20 @@ $border-radius: 2px;
         }
     }
 
-    &-dashed{
+    &-dashed {
         border: 1px dashed #d9d9d9;
+    }
+
+    &-large {
+        height: $height + 8;
+        font-size: 16px;
+        padding: 6.4px 15px;
+    }
+
+    &-small {
+        height: $height - 8;
+        padding: 0 7px;
+        font-size: 14px;
     }
 }
 </style>
