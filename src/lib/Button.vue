@@ -90,6 +90,25 @@ $border-radius: 2px;
         @include disabled;
     }
 
+    & > .#{$class-prefix}-button-loading {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        border-top: 1px solid $color;
+        border-left: 1px solid $color;
+        margin-right: 5px;
+        animation: loading-key 0.8s infinite linear;
+    }
+    @keyframes loading-key {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
     // type begin
     &-primary {
         background-color: $color;
@@ -117,8 +136,9 @@ $border-radius: 2px;
             }
         }
 
-        & > .#{$class-prefix}-button-loading{
-            border: 1px solid #FFF;
+        & > .#{$class-prefix}-button-loading {
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
         }
     }
 
@@ -161,27 +181,13 @@ $border-radius: 2px;
             border-color: $dangerous-color;
             color: $dangerous-color;
         }
+
+        & > .#{$class-prefix}-button-loading {
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+        }
     }
     // danger end
 
-    & > .#{$class-prefix}-button-loading{
-        display: inline-block;
-        height: 10px;
-        width: 10px;
-        border-radius: 50%;
-        border-top: 1px solid $color;
-        border-left: 1px solid $color;
-        margin-right: 5px;
-        animation: loading-key 0.8s infinite linear;
-    }
-
-    @keyframes loading-key {
-        from{
-            transform: rotate(0deg);
-        }
-        to{
-            transform: rotate(360deg);
-        }
-    }
 }
 </style>

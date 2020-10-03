@@ -32,7 +32,6 @@
             <Button loading>默认</Button>
             <Button type="primary" loading>主按钮</Button>
             <Button type="dashed" loading>虚线按钮</Button>
-            <Button type="link" loading>Link 按钮</Button>
         </div>
     </div>
 </template>
