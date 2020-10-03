@@ -1,5 +1,5 @@
 <template>
-    <button class="xin-button" :class="classs">
+    <button class="xin-button" :class="classs" :disabled="disabled">
         <slot></slot>
     </button>
 </template>
@@ -15,9 +15,10 @@ export default {
         // },
         type: String,
         size: String,
+        disabled: Boolean,
     },
     setup(props, ctx) {
-        const { type, size } = props;
+        const { type, size, disabled } = props;
         const classs = computed(() => {
             return {
                 [`xin-button-${type}`]: type,
@@ -26,6 +27,7 @@ export default {
         });
         return {
             classs,
+            disabled,
         };
     },
 };
@@ -37,6 +39,15 @@ $color: #1890ff;
 $tint-color: #40a9ff;
 $height: 32px;
 $border-radius: 2px;
+
+@mixin disabled {
+    color: rgba(0, 0, 0, 0.25);
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+    text-shadow: none;
+    box-shadow: none;
+    cursor: not-allowed;
+}
 
 .#{$class-prefix}-button {
     display: inline-block;
@@ -69,6 +80,10 @@ $border-radius: 2px;
         border-color: $color;
     }
 
+    &[disabled] {
+        @include disabled;
+    }
+
     // type begin
     &-primary {
         background-color: $color;
@@ -81,15 +96,23 @@ $border-radius: 2px;
             border-color: $tint-color;
             color: #fff;
         }
+
+        &[disabled] {
+            @include disabled;
+        }
     }
 
     &-dashed {
         border: 1px dashed #d9d9d9;
     }
-    
-    &-link{
+
+    &-link {
         border: none;
         color: $color;
+
+        &[disabled] {
+            background-color: transparent;
+        }
     }
     // type end
 
