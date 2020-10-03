@@ -27,6 +27,13 @@
             <Button type="dashed" danger>虚线按钮</Button>
             <Button type="link" danger>Link 按钮</Button>
         </div>
+        <div class="btn-wrapper">
+            <h2 class="title">Loading 属性</h2>
+            <Button loading>默认</Button>
+            <Button type="primary" loading>主按钮</Button>
+            <Button type="dashed" loading>虚线按钮</Button>
+            <Button type="link" loading>Link 按钮</Button>
+        </div>
     </div>
 </template>
 

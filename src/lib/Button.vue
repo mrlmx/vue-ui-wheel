@@ -1,5 +1,6 @@
 <template>
     <button class="xin-button" :class="classs" :disabled="disabled">
+        <span v-if="loading" class="xin-button-loading"></span>
         <slot></slot>
     </button>
 </template>
@@ -17,9 +18,10 @@ export default {
         size: String,
         disabled: Boolean,
         danger: Boolean,
+        loading: Boolean,
     },
     setup(props, ctx) {
-        const { type, size, disabled, danger } = props;
+        const { type, size, disabled, danger, loading } = props;
         const classs = computed(() => {
             return {
                 [`xin-button-${type}`]: type,
@@ -30,6 +32,7 @@ export default {
         return {
             classs,
             disabled,
+            loading,
         };
     },
 };
@@ -113,6 +116,10 @@ $border-radius: 2px;
                 color: #fff;
             }
         }
+
+        & > .#{$class-prefix}-button-loading{
+            border: 1px solid #FFF;
+        }
     }
 
     &-dashed {
@@ -155,5 +162,25 @@ $border-radius: 2px;
         }
     }
     // danger end
+
+    & > .#{$class-prefix}-button-loading{
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        border-top: 1px solid $color;
+        border-left: 1px solid $color;
+        margin-right: 5px;
+        animation: loading-key 0.8s infinite linear;
+    }
+
+    @keyframes loading-key {
+        from{
+            transform: rotate(0deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+    }
 }
 </style>
