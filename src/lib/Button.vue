@@ -129,6 +129,7 @@ $border-radius: 2px;
     &-link {
         border: none;
         color: $color;
+        box-shadow: none;
 
         &[disabled] {
             background-color: transparent;
