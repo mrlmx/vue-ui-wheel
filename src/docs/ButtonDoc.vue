@@ -15,9 +15,17 @@
         </div>
         <div class="btn-wrapper">
             <h2 class="title">Disable 属性</h2>
+            <Button disabled>默认</Button>
             <Button type="primary" disabled>主按钮</Button>
             <Button type="dashed" disabled>虚线按钮</Button>
             <Button type="link" disabled>Link 按钮</Button>
+        </div>
+        <div class="btn-wrapper">
+            <h2 class="title">Danger 属性</h2>
+            <Button danger>默认</Button>
+            <Button type="primary" danger>主按钮</Button>
+            <Button type="dashed" danger>虚线按钮</Button>
+            <Button type="link" danger>Link 按钮</Button>
         </div>
     </div>
 </template>

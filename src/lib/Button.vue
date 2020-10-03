@@ -16,13 +16,15 @@ export default {
         type: String,
         size: String,
         disabled: Boolean,
+        danger: Boolean,
     },
     setup(props, ctx) {
-        const { type, size, disabled } = props;
+        const { type, size, disabled, danger } = props;
         const classs = computed(() => {
             return {
                 [`xin-button-${type}`]: type,
                 [`xin-button-${size}`]: size,
+                "xin-button-dangerous": danger,
             };
         });
         return {
@@ -37,6 +39,7 @@ export default {
 $class-prefix: "xin";
 $color: #1890ff;
 $tint-color: #40a9ff;
+$dangerous-color: #ff4d4f;
 $height: 32px;
 $border-radius: 2px;
 
@@ -100,6 +103,16 @@ $border-radius: 2px;
         &[disabled] {
             @include disabled;
         }
+
+        &.#{$class-prefix}-button-dangerous {
+            background-color: $dangerous-color;
+            color: #fff;
+
+            &:focus,
+            &:hover {
+                color: #fff;
+            }
+        }
     }
 
     &-dashed {
@@ -129,5 +142,18 @@ $border-radius: 2px;
         font-size: 14px;
     }
     // size end
+
+    // danger begin
+    &-dangerous {
+        border-color: $dangerous-color;
+        color: $dangerous-color;
+
+        &:focus,
+        &:hover {
+            border-color: $dangerous-color;
+            color: $dangerous-color;
+        }
+    }
+    // danger end
 }
 </style>
