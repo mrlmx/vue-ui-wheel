@@ -1,10 +1,11 @@
 <template>
-    <button class="xin-button" :class="{ [`xin-button-${type}`]: type }">
+    <button class="xin-button" :class="classs">
         <slot></slot>
     </button>
 </template>
 
 <script>
+import { computed } from "vue";
 export default {
     inheritAttrs: false,
     props: {
@@ -15,10 +16,14 @@ export default {
         type: String,
     },
     setup(props, ctx) {
-        const { size, ...rest } = ctx.attrs;
+        const { type } = props;
+        const classs = computed(() => {
+            return {
+                [`xin-button-${type}`]: type,
+            };
+        });
         return {
-            size,
-            rest,
+            classs,
         };
     },
 };
@@ -26,7 +31,8 @@ export default {
 
 <style lang="scss">
 $class-prefix: "xin";
-$color: #40a9ff;
+$color: #1890ff;
+$tint-color: #40a9ff;
 $height: 32px;
 $border-radius: 2px;
 
@@ -59,6 +65,23 @@ $border-radius: 2px;
         color: $color;
         background: #fff;
         border-color: $color;
+    }
+
+    &-primary {
+        background-color: $color;
+        border-color: $color;
+        color: #fff;
+
+        &:focus,
+        &:hover {
+            background-color: $tint-color;
+            border-color: $tint-color;
+            color: #fff;
+        }
+    }
+
+    &-dashed{
+        border: 1px dashed #d9d9d9;
     }
 }
 </style>

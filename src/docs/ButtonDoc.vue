@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="btn-wrapper">
-            <Button>按钮</Button>
-            <Button type="primary">按钮</Button>
-            <Button type="ghost">按钮</Button>
-            <Button type="dashed">按钮</Button>
+            <h2 class="title">Type 属性</h2>
+            <Button>默认</Button>
+            <Button type="primary">主按钮</Button>
+            <Button type="dashed">虚线按钮</Button>
         </div>
     </div>
 </template>
@@ -26,6 +26,9 @@ export default {
 
 <style lang="scss" scoped>
 .btn-wrapper {
+    .title {
+        margin-bottom: 20px;
+    }
     button {
         margin: 0 20px 20px 0;
     }
