@@ -5,6 +5,7 @@
             <Button>默认</Button>
             <Button type="primary">主按钮</Button>
             <Button type="dashed">虚线按钮</Button>
+            <Button type="link">Link 按钮</Button>
         </div>
         <div class="btn-wrapper">
             <h2 class="title">Size 属性</h2>

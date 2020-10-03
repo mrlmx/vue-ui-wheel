@@ -69,6 +69,7 @@ $border-radius: 2px;
         border-color: $color;
     }
 
+    // type begin
     &-primary {
         background-color: $color;
         border-color: $color;
@@ -85,7 +86,14 @@ $border-radius: 2px;
     &-dashed {
         border: 1px dashed #d9d9d9;
     }
+    
+    &-link{
+        border: none;
+        color: $color;
+    }
+    // type end
 
+    // size begin
     &-large {
         height: $height + 8;
         font-size: 16px;
@@ -97,5 +105,6 @@ $border-radius: 2px;
         padding: 0 7px;
         font-size: 14px;
     }
+    // size end
 }
 </style>
