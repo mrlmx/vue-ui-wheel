@@ -4,7 +4,7 @@ import Doc from "./views/Doc.vue";
 import NotFound from "./views/NotFound.vue";
 import SwitchDoc from "./docs/SwitchDoc.vue";
 import ButtonDoc from "./docs/ButtonDoc.vue";
-import DialogDoc from "./docs/DialogDoc.vue";
+import ModalDoc from "./docs/ModalDoc.vue";
 import TabsDoc from "./docs/TabsDoc.vue";
 
 const history = createWebHashHistory();
@@ -28,8 +28,8 @@ const router = createRouter({
           component: ButtonDoc,
         },
         {
-          path: "dialog",
-          component: DialogDoc,
+          path: "modal",
+          component: ModalDoc,
         },
         {
           path: "tabs",
