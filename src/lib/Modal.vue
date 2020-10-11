@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <template v-if="visible">
         <div class="xin-modal-mask"></div>
         <div class="xin-modal-wrapper">
             <div class="xin-modal">
@@ -15,7 +15,7 @@
                 </footer>
             </div>
         </div>
-    </div>
+    </template>
 </template>
 
 <script lang="ts">
@@ -24,6 +24,17 @@ import Button from "./Button.vue";
 export default {
     components: {
         Button,
+    },
+    props: {
+        visible: {
+            type: Boolean,
+            default: false
+        },
+    },
+    setup(props) {
+        // const { visible } = props;
+        // console.log("Modal",{visible});
+        // return { visible };
     },
 };
 </script>
@@ -96,6 +107,12 @@ $border-radius: 2px;
         > button {
             margin-left: 15px;
         }
+    }
+}
+
+@media (max-width: 500px) {
+    .#{$class-prefix}-modal {
+        width: 300px;
     }
 }
 </style>
