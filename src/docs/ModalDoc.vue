@@ -4,7 +4,14 @@
             <h2 class="title">基础用法</h2>
             <Button @click="handleToggle">打开 Modal</Button>
         </div>
-        <Modal :visible="visible" />
+        <!-- 等价于 v-modal 写法 -->
+        <!-- <Modal :visible="visible" @update:visible="visible = $event" /> -->
+        <Modal
+            v-model:visible="visible"
+            :mask-closable="false"
+            @ok="handleOk"
+            @cancle="handleCancle"
+        />
     </div>
 </template>
 
@@ -17,12 +24,26 @@ export default {
     components: { Modal, Button },
     setup() {
         const visible = ref(false);
+
         const handleToggle = () => {
             visible.value = !visible.value;
-        }
+        };
+
+        const handleOk = (e) => {
+            console.log("ok", e);
+            visible.value = false;
+        };
+
+        const handleCancle = (e) => {
+            console.log("cancle", e);
+            visible.value = false;
+        };
+
         return {
             visible,
             handleToggle,
+            handleOk,
+            handleCancle,
         };
     },
 };

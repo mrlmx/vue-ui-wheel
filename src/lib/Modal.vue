@@ -1,17 +1,17 @@
 <template>
     <template v-if="visible">
-        <div class="xin-modal-mask"></div>
         <div class="xin-modal-wrapper">
+            <div class="xin-modal-mask" @click="handleMaskClick"></div>
             <div class="xin-modal">
-                <span class="xin-modal-close">X</span>
+                <span class="xin-modal-close" @click="close">X</span>
                 <header class="xin-modal-header">标题</header>
                 <body class="xin-modal-body">
                     <p>第一行内容</p>
                     <p>第二行内容</p>
                 </body>
                 <footer class="xin-modal-footer">
-                    <Button>取消</Button>
-                    <Button type="primary">确认</Button>
+                    <Button @click="handleCancle">取消</Button>
+                    <Button @click="handleOk" type="primary">确认</Button>
                 </footer>
             </div>
         </div>
@@ -28,13 +28,41 @@ export default {
     props: {
         visible: {
             type: Boolean,
-            default: false
+            default: false,
         },
+        maskClosable: {
+            type: Boolean,
+            default: true,
+        },
+        // onOk: {
+        //     type: Function,
+        // },
+        // onCancle: {
+        //     type: Function,
+        // },
     },
-    setup(props) {
-        // const { visible } = props;
-        // console.log("Modal",{visible});
-        // return { visible };
+    setup(props, context) {
+        const { maskClosable } = props;
+
+        const close = () => {
+            context.emit("update:visible", false);
+        };
+
+        const handleMaskClick = () => {
+            if (maskClosable) {
+                close();
+            }
+        };
+
+        const handleOk = (e) => {
+            context.emit("ok", e);
+        };
+
+        const handleCancle = (e) => {
+            context.emit("cancle", e);
+        };
+
+        return { close, handleMaskClick, handleOk, handleCancle };
     },
 };
 </script>
@@ -44,6 +72,7 @@ export default {
 
 $class-prefix: "xin";
 $border-radius: 2px;
+$z-index: 1000;
 
 .#{$class-prefix}-modal {
     &-mask {
@@ -52,7 +81,7 @@ $border-radius: 2px;
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: 1000;
+        z-index: $z-index;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.45);
     }
@@ -65,7 +94,7 @@ $border-radius: 2px;
         left: 0;
         overflow: auto;
         outline: 0;
-        z-index: 1000;
+        z-index: $z-index;
     }
 
     position: relative;
@@ -73,6 +102,7 @@ $border-radius: 2px;
     background-color: #fff;
     margin: 0 auto;
     margin-top: 100px;
+    z-index: $z-index;
 
     &-close {
         position: absolute;
