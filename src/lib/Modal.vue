@@ -1,26 +1,28 @@
 <template>
     <template v-if="visible">
-        <div class="xin-modal-wrapper">
-            <div class="xin-modal-mask" @click="handleMaskClick"></div>
-            <div class="xin-modal">
-                <span class="xin-modal-close" @click="close">X</span>
-                <header class="xin-modal-header">
-                    <template v-if="title">
-                        {{ title }}
-                    </template>
-                    <template v-else>
-                        <slot name="title" />
-                    </template>
-                </header>
-                <body class="xin-modal-body">
-                    <slot />
-                </body>
-                <footer class="xin-modal-footer">
-                    <Button @click="handleCancle">取消</Button>
-                    <Button @click="handleOk" type="primary">确认</Button>
-                </footer>
+        <Teleport to="body">
+            <div class="xin-modal-wrapper">
+                <div class="xin-modal-mask" @click="handleMaskClick"></div>
+                <div class="xin-modal">
+                    <span class="xin-modal-close" @click="close">X</span>
+                    <header class="xin-modal-header">
+                        <template v-if="title">
+                            {{ title }}
+                        </template>
+                        <template v-else>
+                            <slot name="title" />
+                        </template>
+                    </header>
+                    <body class="xin-modal-body">
+                        <slot />
+                    </body>
+                    <footer class="xin-modal-footer">
+                        <Button @click="handleCancle">取消</Button>
+                        <Button @click="handleOk" type="primary">确认</Button>
+                    </footer>
+                </div>
             </div>
-        </div>
+        </Teleport>
     </template>
 </template>
 
