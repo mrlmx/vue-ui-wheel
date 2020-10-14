@@ -4,7 +4,14 @@
             <div class="xin-modal-mask" @click="handleMaskClick"></div>
             <div class="xin-modal">
                 <span class="xin-modal-close" @click="close">X</span>
-                <header class="xin-modal-header">{{title}}</header>
+                <header class="xin-modal-header">
+                    <template v-if="title">
+                        {{ title }}
+                    </template>
+                    <template v-else>
+                        <slot name="title" />
+                    </template>
+                </header>
                 <body class="xin-modal-body">
                     <slot />
                 </body>
@@ -33,10 +40,7 @@ export default {
             type: Boolean,
             default: true,
         },
-        title: {
-            type: String,
-            default: "Modal Title"
-        }
+        title: String,
         // onOk: {
         //     type: Function,
         // },

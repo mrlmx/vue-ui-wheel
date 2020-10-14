@@ -16,6 +16,22 @@
             <p>第一行内容</p>
             <p>第二行内容</p>
         </Modal>
+
+        <!-- 自定义 Title 插槽 -->
+        <!-- <Modal
+            v-model:visible="visible"
+            :mask-closable="false"
+            @ok="handleOk"
+            @cancle="handleCancle"
+        >
+            <template v-slot:title>
+                <h1 style="color: red">Slot 自定义标题</h1>
+            </template>
+            <template v-slot:default>
+                <p>第一行内容</p>
+                <p>第二行内容</p>
+            </template>
+        </Modal> -->
     </div>
 </template>
 
