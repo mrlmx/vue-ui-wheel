@@ -4,10 +4,9 @@
             <div class="xin-modal-mask" @click="handleMaskClick"></div>
             <div class="xin-modal">
                 <span class="xin-modal-close" @click="close">X</span>
-                <header class="xin-modal-header">标题</header>
+                <header class="xin-modal-header">{{title}}</header>
                 <body class="xin-modal-body">
-                    <p>第一行内容</p>
-                    <p>第二行内容</p>
+                    <slot />
                 </body>
                 <footer class="xin-modal-footer">
                     <Button @click="handleCancle">取消</Button>
@@ -34,6 +33,10 @@ export default {
             type: Boolean,
             default: true,
         },
+        title: {
+            type: String,
+            default: "Modal Title"
+        }
         // onOk: {
         //     type: Function,
         // },

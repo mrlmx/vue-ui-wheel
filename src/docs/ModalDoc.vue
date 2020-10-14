@@ -7,11 +7,15 @@
         <!-- 等价于 v-modal 写法 -->
         <!-- <Modal :visible="visible" @update:visible="visible = $event" /> -->
         <Modal
+            title="基础用法"
             v-model:visible="visible"
             :mask-closable="false"
             @ok="handleOk"
             @cancle="handleCancle"
-        />
+        >
+            <p>第一行内容</p>
+            <p>第二行内容</p>
+        </Modal>
     </div>
 </template>
 
