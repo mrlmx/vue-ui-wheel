@@ -2,8 +2,8 @@
     <div>
         <p>Tabs Doc Page</p>
         <Tabs>
-            <Tab title="Tab1">Tab1 Content</Tab>
-            <Tab title="Tab2">Tab2 Content</Tab>
+            <Tab title="Tab1 标题">Tab1 内容</Tab>
+            <Tab title="Tab2 Title">Tab2 Content</Tab>
         </Tabs>
     </div>
 </template>

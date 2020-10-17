@@ -1,15 +1,16 @@
 <template>
-  <div>
-      <slot />
-  </div>
+    <div class="xin-tab">
+        <slot />
+    </div>
 </template>
 
 <script lang="ts">
-export default {
-
-}
+export default {};
 </script>
 
-<style>
+<style lang="scss">
 
+.#{$class-prefix}-tab {
+    padding: 10px;
+}
 </style>
