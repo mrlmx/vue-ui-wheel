@@ -32,13 +32,15 @@
                 <p>第二行内容</p>
             </template>
         </Modal> -->
+        <Button @click="openAPI">使用 API 打开 Modal</Button>
     </div>
 </template>
 
 <script>
+import { ref } from "vue";
 import Modal from "../lib/Modal.vue";
 import Button from "../lib/Button.vue";
-import { ref } from "vue";
+import ModalAPI from "../lib/ModalAPI"
 
 export default {
     components: { Modal, Button },
@@ -59,11 +61,26 @@ export default {
             visible.value = false;
         };
 
+        const openAPI = () => {
+            ModalAPI({
+                title: "API Modal",
+                content: "Hi Content",
+                ok: (e) => {
+                    console.log("ok", e);
+                    return false;
+                },
+                cancle: (e) => {
+                    console.log("cancle", e);
+                }
+            });
+        }
+
         return {
             visible,
             handleToggle,
             handleOk,
             handleCancle,
+            openAPI
         };
     },
 };
