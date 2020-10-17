@@ -33,6 +33,7 @@ export default {
     components: {
         Button,
     },
+    emits: ["update:visible", "ok", "cancle"],
     props: {
         visible: {
             type: Boolean,

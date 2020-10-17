@@ -12,11 +12,8 @@ export interface IModalAPIProps {
 }
 
 export default (options: IModalAPIProps) => {
-  console.log("Hi", options);
   const { title, content, cancle, ok } = options;
-
   const div = document.createElement("dev");
-
   const closeModal = () => {
     vm.unmount(div);
     div.remove();
@@ -53,7 +50,9 @@ export default (options: IModalAPIProps) => {
           },
         },
         {
-          default: content,
+          default: () => {
+            return content;
+          },
         }
       );
     },
