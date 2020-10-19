@@ -1,6 +1,6 @@
-# vue-ui-wheel
+# xin-ui-vue
 
-a vue ui component project for practicing and it's just a toy
+a vue ui component project.
 
 ## quick start
 

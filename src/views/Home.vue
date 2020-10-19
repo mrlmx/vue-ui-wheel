@@ -5,7 +5,7 @@
         <h1>Vue UI Wheel</h1>
         <h2>a vue ui component project for practicing and it's just a toy</h2>
         <p class="action">
-            <a href="https://github.com/mrlmx/vue-ui-wheel" target="__blank">GitHub</a>
+            <a href="https://github.com/mrlmx/xin-ui-vue" target="__blank">GitHub</a>
             <router-link to="/doc">Start</router-link>
         </p>
     </div>
