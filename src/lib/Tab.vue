@@ -9,8 +9,10 @@ export default {};
 </script>
 
 <style lang="scss">
+@import "./constant";
 
 .#{$class-prefix}-tab {
-    padding: 10px;
+    padding: 15px 0;
+    line-height: 18px;
 }
 </style>

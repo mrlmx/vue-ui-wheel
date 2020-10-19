@@ -3,46 +3,52 @@
         <div class="xin-tabs-nav">
             <div
                 class="xin-tabs-nav-item"
-                :class="{ 'xin-tabs-nav-active': activeTab === index }"
-                v-for="(title, index) of tabTitle"
-                @click="handleTabClick(index)"
-                :key="index"
+                :class="{ 'xin-tabs-nav-active': active === tab.key }"
+                v-for="tab of tabProps"
+                :key="tab.key"
+                @click="handleTabClick(tab.key)"
             >
-                {{ title }}
+                {{ tab.title }}
             </div>
         </div>
         <div class="xin-tabs-content">
-            <component
-                v-for="(tab, index) of defaultSlot"
-                :is="tab"
-                :key="index"
-            />
+            <component :is="tabComponent" />
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import Tab from "./Tab.vue";
 export default {
+    props: {
+        active: String,
+    },
     setup(props, context) {
-        const activeTab = ref<number>(0);
+        // const activeTab = ref<number>(0);
         const defaultSlot = context.slots.default();
-        const tabTitle = defaultSlot.map(({ type, props }) => {
+        const tabProps = defaultSlot.map(({ type, props }) => {
             if (type !== Tab) {
                 throw new Error("Tabs 子标签必须是 Tab");
             }
-            return props.title;
+            return props;
         });
-        const handleTabClick = (index) => {
-            console.log(index);
-            activeTab.value = index;
-        }
+        const tabComponent = computed(() => {
+            return defaultSlot.filter(
+                (tab) => tab.props.key === props.active
+            )[0];
+        });
+        const handleTabClick = (key) => {
+            console.log(key);
+            context.emit("update:active", key);
+            // activeTab.value = index;
+        };
         return {
             defaultSlot,
-            tabTitle,
-            activeTab,
-            handleTabClick
+            tabProps,
+            // activeTab,
+            handleTabClick,
+            tabComponent,
         };
     },
 };
