@@ -4,12 +4,18 @@
             <div
                 class="xin-tabs-nav-item"
                 :class="{ 'xin-tabs-nav-active': active === tab.key }"
-                v-for="tab of tabProps"
+                v-for="(tab, i) of tabProps"
                 :key="tab.key"
                 @click="handleTabClick(tab.key)"
+                :ref="
+                    (el) => {
+                        if (el) navItems[i] = el;
+                    }
+                "
             >
                 {{ tab.title }}
             </div>
+            <div class="xin-tabs-nav-line" ref="navLine" />
         </div>
         <div class="xin-tabs-content">
             <component :is="tabComponent" />
@@ -18,14 +24,15 @@
 </template>
 
 <script lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import Tab from "./Tab.vue";
 export default {
     props: {
         active: String,
     },
     setup(props, context) {
-        // const activeTab = ref<number>(0);
+        const navItems = ref<HTMLDivElement[]>([]);
+        const navLine = ref<HTMLDivElement>(null);
         const defaultSlot = context.slots.default();
         const tabProps = defaultSlot.map(({ type, props }) => {
             if (type !== Tab) {
@@ -38,6 +45,15 @@ export default {
                 (tab) => tab.props.key === props.active
             )[0];
         });
+        onMounted(() => {
+            console.log(navItems);
+            const activeNav = navItems.value.filter((nav) => {
+                return nav.classList.contains("xin-tabs-nav-active");
+            })[0];
+            console.log(activeNav);
+            const { width } = activeNav.getBoundingClientRect();
+            navLine.value.style.width = width + "px";
+        });
         const handleTabClick = (key) => {
             console.log(key);
             context.emit("update:active", key);
@@ -49,6 +65,8 @@ export default {
             // activeTab,
             handleTabClick,
             tabComponent,
+            navItems,
+            navLine,
         };
     },
 };
@@ -59,6 +77,7 @@ export default {
 
 .#{$class-prefix}-tabs {
     &-nav {
+        position: relative;
         display: flex;
         border-bottom: 1px solid #f0f0f0;
 
@@ -74,6 +93,16 @@ export default {
             &:hover {
                 color: $primary-color-secondary;
             }
+        }
+
+        &-line {
+            height: 2px;
+            position: absolute;
+            background: #1890ff;
+            bottom: -1px;
+            left: 0px;
+            width: 0px;
+            border: none;
         }
     }
 }
