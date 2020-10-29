@@ -18,13 +18,13 @@
             <div class="xin-tabs-nav-line" ref="navLine" />
         </div>
         <div class="xin-tabs-content">
-            <component :is="tabComponent" />
+            <component :is="tabComponent" :key="tabComponent.props.key" />
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { computed, ref, watchEffect } from "vue";
+import { computed, onMounted, onUpdated, ref, watchEffect } from "vue";
 import Tab from "./Tab.vue";
 export default {
     props: {
@@ -42,16 +42,32 @@ export default {
             return props;
         });
         const tabComponent = computed(() => {
-            return defaultSlot.filter(
-                (tab) => tab.props.key === props.active
-            )[0];
+            return defaultSlot.find((tab) => tab.props.key === props.active);
         });
-        watchEffect(() => {
+        onMounted(() => {
             const { width, left } = activedNav.value.getBoundingClientRect();
             navLine.value.style.width = width + "px";
             const navWrapperPosition = navWrapper.value.getBoundingClientRect();
             navLine.value.style.left = left - navWrapperPosition.left + "px";
         });
+        onUpdated(() => {
+            const { width, left } = activedNav.value.getBoundingClientRect();
+            navLine.value.style.width = width + "px";
+            const navWrapperPosition = navWrapper.value.getBoundingClientRect();
+            navLine.value.style.left = left - navWrapperPosition.left + "px";
+        });
+        // onMounted(() => {
+        //     watchEffect(() => {
+        //         const {
+        //             width,
+        //             left,
+        //         } = activedNav.value.getBoundingClientRect();
+        //         navLine.value.style.width = width + "px";
+        //         const navWrapperPosition = navWrapper.value.getBoundingClientRect();
+        //         navLine.value.style.left =
+        //             left - navWrapperPosition.left + "px";
+        //     });
+        // });
         const handleTabClick = (key) => {
             context.emit("update:active", key);
         };
