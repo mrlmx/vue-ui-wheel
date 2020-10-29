@@ -4,6 +4,7 @@
         <Tabs v-model:active="activeKey">
             <Tab key="tab1" title="Tab1 标题">Tab1 内容</Tab>
             <Tab key="tab2" title="Tab2 Title">Tab2 Content</Tab>
+            <Tab key="tab3" title="超长的 Tab 名称">Tab3 Content</Tab>
         </Tabs>
     </div>
 </template>

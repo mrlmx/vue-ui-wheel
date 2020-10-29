@@ -1,6 +1,6 @@
 <template>
     <div class="xin-tabs">
-        <div class="xin-tabs-nav">
+        <div class="xin-tabs-nav" ref="navWrapper">
             <div
                 class="xin-tabs-nav-item"
                 :class="{ 'xin-tabs-nav-active': active === tab.key }"
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, onUpdated, ref } from "vue";
 import Tab from "./Tab.vue";
 export default {
     props: {
@@ -32,6 +32,7 @@ export default {
     },
     setup(props, context) {
         const navItems = ref<HTMLDivElement[]>([]);
+        const navWrapper = ref<HTMLDivElement>(null);
         const navLine = ref<HTMLDivElement>(null);
         const defaultSlot = context.slots.default();
         const tabProps = defaultSlot.map(({ type, props }) => {
@@ -46,14 +47,23 @@ export default {
             )[0];
         });
         onMounted(() => {
-            console.log(navItems);
             const activeNav = navItems.value.filter((nav) => {
                 return nav.classList.contains("xin-tabs-nav-active");
             })[0];
-            console.log(activeNav);
-            const { width } = activeNav.getBoundingClientRect();
+            const { width, left } = activeNav.getBoundingClientRect();
             navLine.value.style.width = width + "px";
+            const navWrapperPostion = navWrapper.value.getBoundingClientRect();
+            navLine.value.style.left = left - navWrapperPostion.left + "px";
         });
+        onUpdated(() =>{
+            const activeNav = navItems.value.filter((nav) => {
+                return nav.classList.contains("xin-tabs-nav-active");
+            })[0];
+            const { width, left } = activeNav.getBoundingClientRect();
+            navLine.value.style.width = width + "px";
+            const navWrapperPostion = navWrapper.value.getBoundingClientRect();
+            navLine.value.style.left = left - navWrapperPostion.left + "px";
+        })
         const handleTabClick = (key) => {
             console.log(key);
             context.emit("update:active", key);
@@ -67,6 +77,7 @@ export default {
             tabComponent,
             navItems,
             navLine,
+            navWrapper,
         };
     },
 };
@@ -103,6 +114,7 @@ export default {
             left: 0px;
             width: 0px;
             border: none;
+            transition: all 0.3s;
         }
     }
 }
