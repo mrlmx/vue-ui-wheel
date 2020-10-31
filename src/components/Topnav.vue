@@ -32,7 +32,8 @@ export default {
     justify-content: space-between;
     width: 100%;
     padding: 15px 20px;
-    background: #efefef;
+    // background: #efefef;
+    color: #FFF;
 
     .logo {
         font-size: 22px;

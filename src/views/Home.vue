@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="home">
     <Topnav />
     <div class="banner">
         <h1>Vue UI Wheel</h1>
@@ -22,9 +22,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home{
+    background: no-repeat center url("../assets/bg.jpg");
+    height: 100%;
+}
 .banner {
     text-align: center;
     padding: 50px 0;
+    color: #FFF;
 
     >h1 {
         margin-bottom: 50px;
