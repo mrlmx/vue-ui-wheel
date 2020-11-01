@@ -51,7 +51,7 @@ export default {
         width: 150px;
         flex-shrink: 0;
         padding: 20px;
-        border-right: 1px solid #666;
+        border-right: 1px solid #eaecef;
 
         h2 {
             margin-bottom: 15px;

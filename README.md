@@ -14,6 +14,12 @@ import "xin.css"
 import "xin.scss"
 ```
 
+## Color
+
+- 主色：`#222831`
+- 辅色：`#393e46`
+- 淡色：`#929aab`
+
 ## In
 
 - [bg](https://unsplash.com/photos/ooxzy4JN6gw)
