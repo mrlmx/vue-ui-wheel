@@ -1,15 +1,20 @@
 <template>
-<div class="home">
-    <Topnav />
-    <div class="banner">
-        <h1>Vue UI Wheel</h1>
-        <h2>a vue ui component project for practicing and it's just a toy</h2>
-        <p class="action">
-            <a href="https://github.com/mrlmx/xin-ui-vue" target="__blank">GitHub</a>
-            <router-link to="/doc">Start</router-link>
-        </p>
+    <div class="home">
+        <Topnav />
+        <div class="banner">
+            <img src="../assets/logo.png" />
+            <h1>Xin UI Vue</h1>
+            <h2>
+                a vue ui component project for practicing and it's just a toy
+            </h2>
+            <p class="action">
+                <a href="https://github.com/mrlmx/xin-ui-vue" target="__blank"
+                    >GitHub</a
+                >
+                <router-link to="/doc">Start</router-link>
+            </p>
+        </div>
     </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -22,24 +27,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home{
-    background: no-repeat center url("../assets/bg.jpg");
-    height: 100%;
+.home {
+    height: 100vh;
+    position: relative;
+    background: url("/src/assets/bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    filter: grayscale(100%);
 }
 .banner {
     text-align: center;
     padding: 50px 0;
-    color: #FFF;
+    color: #fff;
 
-    >h1 {
+    > h1 {
         margin-bottom: 50px;
     }
 
-    >h2 {
+    > h2 {
         font-weight: normal;
     }
 
-    >.action {
+    > .action {
         margin: 50px 0;
 
         a {
