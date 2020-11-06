@@ -3,7 +3,7 @@
         <Topnav />
         <div class="content">
             <aside class="aside" v-show="asideVisible">
-                <h2>组件列表</h2>
+                <h2 class="title">组件列表</h2>
                 <ol>
                     <li>
                         <router-link to="/doc/switch">Switch 组件</router-link>
@@ -53,12 +53,19 @@ export default {
         padding: 20px;
         border-right: 1px solid #eaecef;
 
-        h2 {
+        .title {
+            color: #2c3e50;
+            font-size: 16px;
             margin-bottom: 15px;
         }
 
         li {
             margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        .router-link-active{
+            color: #3eaf7c;
         }
     }
 

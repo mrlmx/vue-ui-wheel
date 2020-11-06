@@ -75,7 +75,7 @@ export default {
 
     &-btn {
         border-radius: 10px;
-        padding: 15px 25px;
+        padding: 13px 25px;
         margin: 10px;
         font-size: 22px;
         background-color: #232931;
