@@ -3,6 +3,18 @@
         <Topnav />
         <div class="content">
             <aside class="aside" v-show="asideVisible">
+                <h2 class="title">文档</h2>
+                <ol>
+                    <li>
+                        <router-link to="/doc/introduce">介绍</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/doc/install">安装</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/doc/use">开始使用</router-link>
+                    </li>
+                </ol>
                 <h2 class="title">组件列表</h2>
                 <ol>
                     <li>
