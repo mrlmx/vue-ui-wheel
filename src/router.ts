@@ -6,6 +6,9 @@ import SwitchDoc from "./docs/SwitchDoc.vue";
 import ButtonDoc from "./docs/ButtonDoc.vue";
 import ModalDoc from "./docs/ModalDoc.vue";
 import TabsDoc from "./docs/TabsDoc.vue";
+import Introduce from "./docs/Introduce.vue";
+import Install from "./docs/Install.vue";
+import Use from "./docs/Use.vue";
 
 const history = createWebHashHistory();
 const router = createRouter({
@@ -19,6 +22,18 @@ const router = createRouter({
       path: "/doc",
       component: Doc,
       children: [
+        {
+          path: "introduce",
+          component: Introduce,
+        },
+        {
+          path: "install",
+          component: Install,
+        },
+        {
+          path: "use",
+          component: Use,
+        },
         {
           path: "switch",
           component: SwitchDoc,
