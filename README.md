@@ -19,3 +19,8 @@ import "xin.scss"
 - 主色：`#222831`
 - 辅色：`#393e46`
 - 淡色：`#929aab`
+
+## Inspired
+
+- [antd](https://github.com/ant-design/ant-design/)
+- [VuePress](https://github.com/vuejs/vuepress)
