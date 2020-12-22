@@ -1,6 +1,9 @@
 <template>
     <div>
-        <Switch v-model:value="val"/>
+        <div class="switch-wrapper">
+            <h2 class="title">基本使用</h2>
+            <Switch v-model:value="val"/>
+        </div>
     </div>
 </template>
 
@@ -20,4 +23,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.switch-wrapper {
+    .title {
+        margin-bottom: 20px;
+    }
+}
 </style>
