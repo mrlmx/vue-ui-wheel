@@ -9,6 +9,10 @@ import TabsDoc from "./docs/TabsDoc.vue";
 import Introduce from "./docs/Introduce.vue";
 import Install from "./docs/Install.vue";
 import Use from "./docs/Use.vue";
+import Markdown from "./components/Markdown.vue";
+import { h } from "vue";
+
+const loadMD = (fileName) => h(Markdown, {path:`../markdown/${fileName}.md`, key:fileName})
 
 const history = createWebHashHistory();
 const router = createRouter({
@@ -24,15 +28,15 @@ const router = createRouter({
       children: [
         {
           path: "introduce",
-          component: Introduce,
+          component: loadMD("introduce"),
         },
         {
           path: "install",
-          component: Install,
+          component: loadMD("install"),
         },
         {
           path: "use",
-          component: Use,
+          component: loadMD("use"),
         },
         {
           path: "switch",
