@@ -6,18 +6,17 @@ export default {
   //可以直接引入markdown文件
   plugins: [md()],
   //文档可以直接输出让开发者使用的代码
-  //   vueCustomBlockTransforms: {
-  //     demo: (options) => {
-  //       const { code, path } = options
-  //       const file = fs.readFileSync(path).toString()
-  //       const parsed = baseParse(file)
-  //       const title = parsed.children[0].content
-  //       const main = file.split(parsed.loc.source).join('').trim()
-  //       return `export default function (Component) {
-  //         Component.__sourceCode = ${
-  //         JSON.stringify(file)
-  //       }
-  //       }`.trim()
-  //     }
-  //   }
+  vueCustomBlockTransforms: {
+    demo: (options) => {
+      const { code, path } = options;
+      const file = fs.readFileSync(path).toString();
+      const parsed = baseParse(file);
+      // @ts-ignore
+      const title = parsed.children[0].content;
+      const main = file.split(parsed.loc.source).join("").trim();
+      return `export default function (Component) {
+          Component.__sourceCode = ${JSON.stringify(file)}
+        }`.trim();
+    },
+  },
 };

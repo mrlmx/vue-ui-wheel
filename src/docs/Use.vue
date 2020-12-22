@@ -1,13 +1,15 @@
 <template>
-  <div>使用</div>
+    <article class="markdown-body" v-html="md"></article>
 </template>
 
 <script>
+import md from "../markdown/use.md";
 export default {
-
-}
+    data() {
+        return { md };
+    },
+};
 </script>
 
 <style>
-
 </style>
